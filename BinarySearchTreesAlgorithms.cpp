@@ -159,7 +159,7 @@ void insertIntoBSt(BSTNode *root, int value)
         }
     }
 
-    if (value > root->data)
+    if (value >= root->data)
     {
         if (root->right == NULL)
         {
@@ -176,8 +176,7 @@ void insertIntoBSt(BSTNode *root, int value)
     return;
 }
 
-BSTNode *sortedArrayToBST(int nums[], int length)
-{
+BSTNode *sortedArrayToBST(int nums[], int length){
     int mid;
 
     if (length % 2 == 0)
@@ -225,36 +224,28 @@ int BinaryTreeHeight(BSTNode *root, int height)
     return height + 1;
 }
 
-void LevelOrderTraversal_I()
-{
+void LevelOrderTraversal_I(){
 }
 
-void LevelOrderTraversal_R()
-{
+void LevelOrderTraversal_R(){
 }
 
-void PreOrderTraversal_R()
-{
+void PreOrderTraversal_R(){
 }
 
-void PreOrderTraversal_I()
-{
+void PreOrderTraversal_I(){
 }
 
-void InOrderTraversal_R()
-{
+void InOrderTraversal_R(){
 }
 
-void InOrderTraversal_I()
-{
+void InOrderTraversal_I(){
 }
 
-void PostOrderTraversal_R()
-{
+void PostOrderTraversal_R(){
 }
 
-void PostOrderTraversal_I()
-{
+void PostOrderTraversal_I(){
 }
 
 int main()
