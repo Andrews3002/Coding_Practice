@@ -1,0 +1,26 @@
+  
+C++ MATHS FUNCTIONS
+ 1. First add #include <cmath> to the header of the project
+ 
+cout << pow(2, 5);  This will find 2 to the power of 5
+cout << sqrt(36); This will find the square root of 36
+cout << round(4.1); This will round 4.1 to the nearest integer
+cout << ceil(4.1); This will round 4.1 to the oposite integer
+ 		   so if it is used with 4.1  it will be 5 and
+		   if it is used with 4.7 it will be 4.
+cout << fmax(3, 10); This will specify wich of the numbers are 
+                     bigger.
+cout << fmin(3, 10); This will specify which of the numbers are
+                     smaller.
+double num1, num2;
+    char op;
+    cin >> num1;
+    cin >> op;
+    cin >> num2;
+    double result;
+    if(op == '+'){result = num1 + num2;}
+    else if(op == '-'){result = num1 - num2;}
+    else if(op == '*'){result = num1 * num2;}
+    else if(op == '/'){result = num1 / num2;}
+    else{ cout << "invalid operator";}
+    cout << num1 << op << num2 << " = " << result;
