@@ -13,7 +13,7 @@ struct BSTNode
 
 struct Node
 {
-    BSTNode *node;
+    BSTNode *bstNode;
     Node *next;
 };
 
@@ -43,19 +43,19 @@ Queue *initializeQ()
     return q;
 }
 
-void push(Stack *s, BSTNode *node)
+void push(Stack *s, BSTNode *bstNode)
 {
     if (s->top == NULL)
     {
         s->top = new Node;
-        s->top->node = node;
+        s->top->bstNode = bstNode;
         s->top->next = NULL;
         return;
     }
     else
     {
         Node *newnode = new Node;
-        newnode->node = node;
+        newnode->bstNode = bstNode;
         newnode->next = s->top;
         s->top = newnode;
         return;
@@ -71,25 +71,25 @@ BSTNode *pop(Stack *s)
 
     if (s->top->next == NULL)
     {
-        BSTNode *temp = s->top->node;
+        BSTNode *temp = s->top->bstNode;
         delete (s->top);
         s->top = NULL;
         return temp;
     }
     else
     {
-        BSTNode *temp = s->top->node;
+        BSTNode *temp = s->top->bstNode;
         s->top = s->top->next;
         return temp;
     }
 }
 
-void enqueue(Queue *q, BSTNode *node)
+void enqueue(Queue *q, BSTNode *bstNode)
 {
     if (q->front == NULL)
     {
         Node *newnode = new Node;
-        newnode->node = node;
+        newnode->bstNode = bstNode;
         newnode->next = NULL;
         q->front = newnode;
         q->end = q->front;
@@ -98,7 +98,7 @@ void enqueue(Queue *q, BSTNode *node)
     else
     {
         Node *newnode = new Node;
-        newnode->node = node;
+        newnode->bstNode = bstNode;
         newnode->next = NULL;
         q->end->next = newnode;
         q->end = newnode;
@@ -114,7 +114,7 @@ void dequeue(Queue *q)
     }
     if (q->front == q->end)
     {
-        int val = q->front->node->data;
+        int val = q->front->bstNode->data;
         cout << val << " ";
         q->front = NULL;
         q->end = NULL;
@@ -122,7 +122,7 @@ void dequeue(Queue *q)
     }
     else
     {
-        int val = q->front->node->data;
+        int val = q->front->bstNode->data;
         Node *temp = q->front;
         q->front = q->front->next;
         delete (temp);
