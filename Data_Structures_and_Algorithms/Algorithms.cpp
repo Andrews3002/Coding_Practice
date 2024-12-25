@@ -200,10 +200,8 @@ void LevelOrderTraversal_I(BSTNode *root){
         BSTNode *current = q->front->bstNode;
         dequeue(q);
 
-        cout << current->data << " ";
-
-        if (current->right) enqueue(q, current->right);
         if (current->left) enqueue(q, current->left);
+        if (current->right) enqueue(q, current->right);
     }
 }
 
