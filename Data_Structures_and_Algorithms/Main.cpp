@@ -334,55 +334,56 @@ int main(){
     root->right->right->right->right = NULL;
 
 
-    // cout << "Iterative level order traversal" << endl;
+    cout << "Iterative level order traversal" << endl;
 
-    // LevelOrderTraversal_I(root);
+    LevelOrderTraversal_I(root);
 
-    // cout << "Recursive level order traversal" << endl;
-    // int height =  BinaryTreeHeight(root, 0);
+    cout << endl << endl;
 
-    // for (int i = 0; i < height+1; i++){
-    //     LevelOrderTraversal_R(root, i);
-    //     cout << endl;
-    // }
+    cout << "Recursive level order traversal" << endl;
+    int height =  BinaryTreeHeight(root, 0);
 
-    // cout << endl;
+    for (int i = 0; i < height+1; i++){
+        LevelOrderTraversal_R(root, i);
+    }
 
-    // cout << "Recursive preorder traversal" << endl;
+    cout << endl << endl;
 
-    // PreOrderTraversal_R(root);
+    cout << "Recursive preorder traversal" << endl;
 
-    // cout << endl << endl;
+    PreOrderTraversal_R(root);
 
-    // cout << "Iterative preorder traversal" << endl;
+    cout << endl << endl;
 
-    // PreOrderTraversal_I(root);
+    cout << "Iterative preorder traversal" << endl;
 
-    // cout << endl << endl;
+    PreOrderTraversal_I(root);
 
-    // cout << "Recursive inorder traversal" << endl;
+    cout << endl << endl;
 
-    // InOrderTraversal_R(root);
+    cout << "Recursive inorder traversal" << endl;
 
-    // cout << endl << endl;
+    InOrderTraversal_R(root);
 
-    // cout << "Iterative inorder traversal" << endl;
+    cout << endl << endl;
 
-    // InOrderTraversal_I(root);
+    cout << "Iterative inorder traversal" << endl;
 
-    // cout << endl << endl;
+    InOrderTraversal_I(root);
 
-    // cout << "Recursive postorder traversal" << endl;
+    cout << endl << endl;
 
-    // PostOrderTraversal_R(root);
+    cout << "Recursive postorder traversal" << endl;
 
-    // cout << endl << endl;
+    PostOrderTraversal_R(root);
 
-    // cout << "Iterative postorder traversal" << endl;
+    cout << endl << endl;
 
-    // PostOrderTraversal_I(root);
+    cout << "Iterative postorder traversal" << endl;
 
-    // cout << endl << endl;
+    PostOrderTraversal_I(root);
+
+    cout << endl << endl;
 
     return 0;
 }
