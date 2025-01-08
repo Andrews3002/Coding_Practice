@@ -256,28 +256,28 @@ void minHeapSort(){
 }
 
 //TODO BST Algorithms.................................................................................
-void LevelOrderTraversal_R(){
+void LevelOrderTraversal_R(BSTNode *root, int level){
 }
 
-void LevelOrderTraversal_I(){
+void LevelOrderTraversal_I(BSTNode *root){
 }
 
-void PreOrderTraversal_R(){
+void PreOrderTraversal_R(BSTNode *root){
 }
 
-void PreOrderTraversal_I(){
+void PreOrderTraversal_I(BSTNode *root){
 }
 
-void InOrderTraversal_R(){
+void InOrderTraversal_R(BSTNode *root){
 }
 
-void InOrderTraversal_I(){
+void InOrderTraversal_I(BSTNode *root){
 }
 
-void PostOrderTraversal_R(){
+void PostOrderTraversal_R(BSTNode *root){
 }
 
-void PostOrderTraversal_I(){
+void PostOrderTraversal_I(BSTNode *root){
 }
 
 int main(){
