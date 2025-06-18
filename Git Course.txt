@@ -1,0 +1,471 @@
+Configuring Git{
+    >git --version
+    {
+        Function:
+        checking which version of git you have on your machine or if you have it installed at all
+    }
+
+    >git config --global user.name "Alex Andrews"
+    {
+        Function:
+        setting the name configuration on the global level
+
+        Explanation:
+        you have to configure git when you are first using it with your(name, email, default editor and line endings)
+        these configurations are made separately for 3 levels, these are:
+        the system level(all users)
+        the global level(all repositories of the current user)
+        the local level(the current repository)
+    }
+
+    >git config --global user.email alexangeloandrews@gmail.com
+    {
+        Function:
+        setting the email configuration on the global level (no need for quotation marks because there is no space in emails)
+
+        Explanation:
+        you have to configure git when you are first using it with your(name, email, default editor and line endings)
+        these configurations are made separately for 3 levels, these are:
+        the system level(all users)
+        the global level(all repositories of the current user)
+        the local level(the current repository)
+    }
+
+    >git config --global core.editor "code --wait"
+    {
+        Function:
+        setting the default editor configuration on the global level (the "code --wait" will tell the terminal window to wait for the code editor window to close before asking for the next prompt)
+
+        Explanation:
+        you have to configure git when you are first using it with your(name, email, default editor and line endings)
+        these configurations are made separately for 3 levels, these are:
+        the system level(all users)
+        the global level(all repositories of the current user)
+        the local level(the current repository)
+    }
+
+    >git config --global core.autocrlf true
+    {
+        Function:
+        setting the line ending configuration on the global level(for Windows users since the "\r" symbol must be removed for commits and added pack for pulls)
+
+        Explanation:
+        core.autocrlf is a configuration that allows changes to end of line symbols
+        Repositories and macOS/linux operating systems only store line feed symbols "\n" to indicate end of lines
+        Windows uses both carriage return "\r" symbols and line feed "\n" symbols to indicate end of lines
+        Therefore when Windows users commit data to the repository the carriage return "\r" symbols must be removed and added back when they pull data from the repository
+        Alternatively for macOS/Linux users, when they pull data from  the repository nothing needs to be modified because the data already only uses line feed symbols "\n" 
+        but when they commit data to the repository incase carriage return symbols "\r" where added there must be an attempt to remove all carriage return symbols even if there are 
+        not any due to the OS being used (this ensures the repository stays reliable with only line feed symbols).
+    }
+
+    >git config --global core.autocrlf input
+    {
+        Function:
+        setting the line ending configuration on the global level(for macOS/Linux users since the "\r" symbol only must be removed for commits)
+
+        Explanation:
+        core.autocrlf is a configuration that allows changes to end of line symbols
+        Repositories and macOS/linux operating systems only store line feed symbols "\n" to indicate end of lines
+        Windows uses both carriage return "\r" symbols and line feed "\n" symbols to indicate end of lines
+        Therefore when Windows users commit data to the repository the carriage return "\r" symbols must be removed and added back when they pull data from the repository
+        Alternatively for macOS/Linux users, when they pull data from  the repository nothing needs to be modified because the data already only uses line feed symbols "\n" 
+        but when they commit data to the repository incase carriage return symbols "\r" where added there must be an attempt to remove all carriage return symbols even if there are 
+        not any due to the OS being used (this ensures the repository stays reliable with only line feed symbols).
+    }
+
+    >git config --global diff.tool difftoolname
+    {
+        Function:
+        gives a variable name "difftoolname" to the tool you are going to use for comparing files in the staging area before committing
+    }
+
+    >git config --global diff.tool.difftoolname.cmd "code --wait --diff $LOCAL $REMOTE"
+    {
+        Function:
+        Tell git how to launch our desired diff tool
+
+        Explanation:
+        "code" = the default variable name your terminal will use for indicating the path of your desired development tool
+        "--wait" = makes the terminal wait for you to close the opened window before prompting for the next command
+        "--diff" = tells the development tool that you want to use it for comparing files
+        "$LOCAL" = placeholder for the old copy of a file
+        "$REMOTE" = placeholder for the new copy of a file
+
+        "git config --global -e" must be used to open the global configuration settings to make sure the command worked properly
+    }
+
+    >git config --global -e
+    {
+        Function:
+        open our default editor to edit our global settings
+
+        Explanation
+        because all these configuration settings should be stored on a text file
+    }
+
+    >git config --help
+    {
+        Function:
+        gives a full comprehensive description of all configuration prompts and functions in the form of documentation(use space to go to the next page and q to close the document and return to entering prompts)
+    }
+
+    >git config -h
+    {
+        Function:
+        gives a short summary description on all configuration prompts and functions
+    }
+}
+
+Creating a new git repository{
+    >git init
+    {
+        Function:
+        Initializes an empty repository
+
+        Explanation:
+        In whichever directory the the command line was referencing when the "git init" command is used, a subdirectory called ".git" is created
+        This subdirectory ".git" contains details on how git manages the repository and is not meant to be accessed or edited which is why it is hidden
+        If this subdirectory is corrupted or removed you are going to lose your project history, essentially deleting the repository entirely
+    }
+
+    Its important to understand the difference between the project directory and its subdirectory ".git" created by the git init command
+    the directory contains the project files along with the ".git" subdirectory and when we want to take a snapshot of our project
+    files we take the current state of the files in the project and store the history of those files in the .git subdirectory.
+    You can think of the project directory as your locally stored folder on your device storing the files that make up your project
+    and the ".git" subdirectory in this locally stored folder is essentially a representation of the repository storing committed history 
+    of every state of your project.
+}
+
+Main Workflow commands{
+    >git add file1.txt
+    {
+        Function:
+        updates the staging area with whichever changes are associated with a file called "file1.txt" wether it be creation, modification or even deletion.
+
+        >git add file1.txt file2.txt
+        {
+            Function:
+            updates the staging area with whichever changes are associated to the 2 files called "file1.txt" and "file2.txt" wether it be creation, modification or even deletion.
+        }
+
+        >git add *.txt
+        {
+            Function:
+            updates the staging area with whichever changes are associated to all the files that end with ".txt" wether it be creation, modification or even deletion.
+        }
+
+        >git add .
+        {
+            Function:
+            updates the staging area with whichever changes are associated to all the files in the working directory wether it be creation, modification or even deletion.
+        }
+    }
+
+    >git rm file1.txt
+    {
+        Function:
+        removing the file called "file1.txt" from both the working directory and the staging area in one command
+
+        >git rm file1.txt file2.txt
+        {
+            Function: 
+            removing the 2 files called "file1.txt" and "file2.txt" from both the working directory and the staging area in one command
+        }
+
+        >git rm *.txt
+        {
+            Function:
+            removing all files that end in ".txt" from both the working directory and the staging area in one command
+        }
+
+        >git rm *
+        {
+            Function:
+            removing all files in the working directory from both the working directory and the staging area in one command
+        }
+
+        >git rm --cached file1.txt
+        {
+            Function:
+            removes a file from the staging area alone (the --cached means to remove items from just the staging area)
+        }
+
+        >git rm --cached -r directory1/
+        {
+            removes an entire directory from the staging area alone (the -r means to do this recursively and for directories you need to add the "/" at after the directory name)
+        }
+    }
+
+    >git restore file1.txt
+    {
+        Function:
+        The working area's version of file1.txt will be overridden with the HEAD (most recent) committed version of file1.txt.
+
+        >git restore file1.txt file2.txt
+        {
+            Function:
+            This command does it for 2 files
+        }
+
+        >git restore *txt
+        {
+            Function:
+            This command does it for all files ending with ".txt"
+        }
+
+        >git restore .
+        {
+            Function:
+            This command does it for all the files and directories
+        }
+
+        >git restore --source=HEAD~1 file1.txt
+        {
+            Function:
+            restore file1.txt from the commit before the most recent one to the file1.txt in the working area and removes it from the staging area
+        }
+
+        >git restore --staged --source=HEAD~1 file1.txt
+        {
+            Function:
+            restore file1.txt from the commit before the most recent one to the file1.txt in the staging area and does nothing to the working area
+        }
+    }
+
+    >git mv file1.txt newname.txt
+    {
+        Function:
+        rename the file named file1.txt to newname.txt in both the working directory and the staging area
+    }   
+
+    >git ls-files
+    {
+        Function:
+        shows all the files in the staging area
+    }
+
+    >git status
+    {
+        Function:
+        Shows status of the working area and the staging area
+
+        >git status -s
+        {
+            Function:
+            Gives shorter more simplified way of checking the status of the working area and the staging area
+
+            Explanation:
+            It uses short 2 column system
+
+            The left column represents the staging area and the right column represents the working area
+
+            ie FOR THE PURPOSE OF THIS EXPLANATION ASSUME THE NEXT PHASE OF THE WORKING AREA IS THE STAGING AREA AND THE NEXT PHASE OF THE STAGING AREA IS THE COMMITTED DATA 
+            
+            blank - The file contains the same data as its instance in the next phase
+            M - The file contains different data than its instance in the next phase
+            ? - The file does have any existing instance in the next phase
+            A - The file has been added to the staging area for the first time
+        }
+    }
+
+    >git diff --staged
+    {
+        Function:
+        Shows the contents of all your files in the staging area and the differences between their previously committed instances 
+
+        >git diff
+        {
+            Function:
+            Shows the contents of all your files in the working area and the differences between their instances in the staging area
+        }
+
+        >git difftool --staged
+        {
+            Function:
+            Shows the contents of all your files in the staging area and the differences between their previously committed instances but this time with a visual tool
+            once the difftool was configured properly at the start
+        }
+
+        >git difftool
+        {
+            Function:
+            Shows the contents of all your files in the working area and the differences between their instances in the staging area but this time with a visual tool
+            once the difftool was configured properly at the start
+        }
+    }
+
+    >git commit -m "your message to go with the commit"
+    {
+        Function:
+        Takes a snapshot of the current state of the staging area and records it in the repository history logs. Also "-m" allows you to add a message to go with the commit
+    
+        Explanation:
+        It should open a file for you to review before the commit is made. In this file at the top you can add a short message and an empty line under the short message to then
+        add a detailed message.
+        When you close the file the commit will be completed and the command line will continue asking for the next command.
+        Each commit stores information like =
+        ID,
+        Message,
+        Date/Time,
+        Author,
+        Complete Snapshot of the data
+
+        >git commit -a -m "your message to go with the commit"
+        {
+            Function:
+            Takes all the modified files (-a) and commits them without staging
+        }
+    }
+
+    >git log
+    {
+        Function:
+        To view your commit history sorted from most recent to oldest (press "space" to go to the next page and "q" to exit)
+
+        >git log --reverse
+        {
+            To view your commit history sorted from oldest to most recent
+        }
+
+        >git log --oneline
+        {
+            Shows your commit history in short one line summary form from most recent to oldest
+        }
+
+        git log --oneline --reverse
+        {
+            Shows your commit history in short one line summary form but from oldest to most recent
+        }
+    }
+
+    >git show 2h9wqr79
+    {
+        Function:
+        Takes the commit id "2h9wqr79" and shows the differences of all the files in that particular commit with the contents of all the files in the previous commit
+
+        >git show HEAD~1
+        {
+            Function:
+            Takes the HEAD pointer "HEAD~1" and shows the differences of all the files in that particular commit with the contents of all the files in the previous commit
+            "~1 means one point back from the HEAD which is a pointer to the most recent commit"
+        }
+
+        >git show HEAD~1:.gitignore
+        {
+            Function:
+            Shows the content of a file ".gitignore" in a particular commit indicated by the HEAD pointer
+        }
+    }
+
+    >git ls-tree 2h9wqr79
+    {
+        Function:
+        Shows all the files and directories stored in this commit that was indicated by commit id "2h9wqr79" this time with no comparison unlike the "show" command
+        "files a represented by keyword(blob) and directories are represented by keyword(tree)"
+
+        >git ls-tree HEAD~1
+        {
+            Shows all the files and directories stored in this commit that was indicated by HEAD pointer "HEAD~1"
+        }
+        
+        Explanation:
+        if the "git show" command is now used with any of the id's of the files/directories shown after the "git ls-tree" command, 
+        the data that will be shown will be the content of the files or what is contained in the directories, no comparisons.
+
+        In simple terms if "git show" is used on on a "git log" id the output will be a comparison but if it is used on a "git ls-tree" id the output will just be the details
+    }
+
+    >git clean -fd
+    {
+        Function:
+        Removes untracked files (`-f`) and untracked directories (`-d`) from the working directory. Use with caution—it cannot be undone!
+    }
+}
+
+Branching{
+    >git branch branchname
+    {
+        Function:
+        creates a new branch called branchname. Note the branch is created at whichever node the HEAD pointer is pointing too.
+    }
+
+    >git branch -D branchname
+    {
+        Function:
+        Deletes the branch called (branchname)
+    }
+
+    >git checkout branchname
+    {
+        Function:
+        switches the HEAD pointer to the branch with the name "branchname"
+    }
+}
+
+Merging{
+    >git merge branchname -m "merging branch message"
+    {
+        Function:
+        merges the branch named "branchname" to whichever node the HEAD pointer is pointing too. Note the merge will operate like a final commit that connects to 
+        whichever branch the HEAD pointer is pointing to and therefore it is wise to have a message with the merge.
+    }
+
+    Merge Conflict{
+        after resolving a conflict you need to make a commit indicating the resolved conflict
+    }
+}
+
+Rebase{
+    >git rebase main
+    {
+        takes the top of the branch called main and connects it to the first commit in the current branch that has the HEAD pointer pointing to the top of it
+        This makes it that merging just becomes a fast forward merge as apposed to a 3 way merge.
+    }
+
+    Rebase results in a linear, clear log history and ensures your code is always compatible with the main branch but it can result in issues when used on shared branches 
+    and commits because when a rebase is done the id's of the branch commits are all changed and if you are sharing copies of these commits between collaborators when the
+    ids change github will not be able to identify it
+}
+
+Github Git commands{
+    >git remote add origin https:///url_to_github_repository
+    {
+        Function:
+        creates a connection to the online Github repository assigned to the variable origin
+    }
+
+    >git push origin master
+    {
+        Function:
+        pushes the branch (master) to the github online repository (origin). Note you also need to have the HEAD pointer pointing towards the branch you want to push
+    }
+
+    >git fetch
+    {
+        Function:
+        Downloads changes (commits, files, refs) from the remote repository to your local repository, but does *not* merge them into your working branch.
+
+        Use when:
+        -You want to see what changed before applying it.
+        -You’re working on something and don’t want a surprise merge.
+        -You want to review or test remote changes before merging.
+    }
+
+    >git pull origin master
+    {
+        Downloads changes from the `master` branch on the remote (`origin`) and automatically merges them into your current local branch.
+
+        Use when:
+        -You’re ready to bring your branch up to date with the remote.
+        -You want to automatically fetch and merge changes.
+    }
+}
+
+Feature Branch Workflow Steps{
+    - Create a feature branch
+    - Upload to Github
+    - Create a Pull-Request
+    - Merge feature branch
+    - Update local repository after merge
+}
