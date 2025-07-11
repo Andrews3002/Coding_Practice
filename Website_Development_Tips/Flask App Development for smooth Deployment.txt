@@ -1,0 +1,53 @@
+STEP 1: CREATE VIRTUAL ENVIRONMENT
+COMMAND: python -m venv virtual_envi
+// "virtual_envi" is a name that can be chosen freely
+
+STEP 2: ENSURE POWERSHELL EXECUTION POLICY ON YOUR SYSTEM IS NOT SET TO RESTRICT SCRIPT EXECUTION
+COMMAND: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+// to set it back to restrict script execution use this command: Set-ExecutionPolicy -ExecutionPolicy Restricted -Scope CurrentUser
+
+STEP 3: ACTIVATE YOUR VIRTUAL ENVIRONMENT
+COMMAND: virtual_envi\Scripts\activate
+// to deactivate your virtual environment use this command: deactivate
+
+STEP 4: BECAUSE THE VIRTUAL ENVIRONMENT FOLDER CAN BE QUITE LARGE AND ALL THAT IS REQUIRED FOR DEPLOYMENT IS THE REQUIREMENTS FILE DO THIS TO ENSURE THE VIRTUAL ENVIRONMENT FOLDER IS NOT COMMITED AND PUSHED TO GITHUB
+- create a .gitignore file in the app folder and type the name of the virtual environment folder in the .gitignore file
+
+STEP 4: CODE YOUR PROJECT (ENSURE YOU ACTIVATE YOUR VIRTUAL ENVIRONMENT EVERYTIME YOU OPEN YOUR PROJECT BEFORE YOU CODE OR IF YOU KILL YOUR TERMINAL AND OPEN A NEW TERMINAL)
+//While coding install one by one all your packages, libraries and dependencies in the virtual environment
+
+STEP 5: SET UP ENVIRONMENT VARIABLES
+COMMAND: pip install python-dotenv
+//Create a .env file on the same level as your flask app and populate it with your environment variables
+eg: SQLALCHEMY_DATABASE_URI=postgresql://procurementdb_dn6o_user:SKyeQM7R390kiOp4a6qA2JzmmYDzFZQw@dpg-cu0ngcl2ng1s73eoc04g-a.oregon-postgres.render.com/procurementdb_dn6o
+//Add code in your main flask app file to load the .env file into your Flask app, write: "from dotenv import load_dotenv" and then on a new line write "load_dotenv()"
+//Then in your create_app() function add your environment variables by using os.getenv("whatever the environment variable name is")
+eg: app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+//Finally add .env to your .gitignore file
+
+STEP 6: FOR DEPLOYING ON RENDER.COM INSTALL THE GUNICORN DEPENDENCY BEFORE DEPLOYMENT
+COMMAND: pip install gunicorn
+
+STEP 7: GENERATE YOUR REQUIREMTNS FILE
+COMMAND: pip freeze > requirements.txt
+
+STEP 8: SETUP DEPLOYMENT ON RENDER
+START COMMAND without using a remote database: $ flask init && gunicorn (main app name in this case(app)):app
+START COMMAND with a remote database: $ gunicorn (main app name in this case(app)):app
+BUILD COMMAND: $ pip install -r requirements.txt
+
+NOTE: UNINSTALL ALL DEPENDENCIES
+ONCE YOU CREATE A REQUIREMENTS FILE USE THE COMMAND: pip uninstall -r requirements.txt -y
+
+NOTE: INSTALL ALL  DEPENDENCIES
+ONCE YOU CREATE A REQUIREMENTS FILE USE THE COMMAND: pip install -r requirements.txt
+
+NOTE: VIEW A LIST OF ALL YOUR DEPENDENCIES
+USE COMMAND: pip list
+
+NOTE: TO UNINSTALL ALL YOUR DEPENDENIES
+USE COMMAND: pip freeze | ForEach-Object { pip uninstall -y $_ }
+
+
+
+
