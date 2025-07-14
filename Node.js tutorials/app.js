@@ -1,10 +1,9 @@
-const os = require('os')
+const fs = require('fs')
 
-var totalMemory = os.totalmem()
-var freeMemory = os.freemem()
+fs.readdir('./jojo', function(err, files){
+    console.log("Error", err)
+    console.log("Files", files)
+})
 
-console.log("Total memory = " + totalMemory)
-console.log("Free memory = " + freeMemory)
-
-console.log(`Total Memory: ${totalMemory}`)
-console.log(`Free Memory: ${freeMemory}`)
+var message = "Hello World"
+console.log("Message:", message, "I'm Alex")
