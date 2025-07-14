@@ -1,9 +1,15 @@
 const http = require('http')
 
-const server = http.createServer()
+const server = http.createServer((req, res) =>{
+    if (req === '/'){
+        res.write("Hello World")
+        res.end()
+    }
 
-server.addListener('Connection', function(socket){
-    console.log("Connection Made....")
+    if (req === '/api/courses'){
+        res.write(JSON.stringify([1,2,3]))
+        res.end()
+    }
 })
 
 server.listen(3000)
