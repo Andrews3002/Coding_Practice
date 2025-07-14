@@ -1,9 +1,11 @@
-const fs = require('fs')
+const EventEmitter = require('events')
+const emitter = new EventEmitter()
 
-fs.readdir('./jojo', function(err, files){
-    console.log("Error", err)
-    console.log("Files", files)
+//Register a listenter
+emitter.addListener('messageLogged', function(){
+    console.log("Listener called")
 })
 
-var message = "Hello World"
-console.log("Message:", message, "I'm Alex")
+//Raise an event
+emitter.emit('messageLogged')
+
