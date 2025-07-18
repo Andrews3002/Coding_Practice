@@ -1,0 +1,1 @@
+pyinstaller --onedir --noconsole --icon Logo.ico app.py
