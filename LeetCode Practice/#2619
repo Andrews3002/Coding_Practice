@@ -2,21 +2,7 @@
  * @return {null|boolean|number|string|Array|Object}
  */
 Array.prototype.last = function() {
-    if (this.length == 0){
-        return -1;
-    }
-    else{
-        let i = 0;
-        let preVal = null;
-        let val = this[0];
-        while (val != null){
-            i++;
-            preVal = val;
-            val = this[i];
-        }
-
-        return preVal;
-    }
+    return this.length == 0 ? -1 : this[this.length - 1];
 };
 
 /**
