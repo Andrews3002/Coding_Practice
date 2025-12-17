@@ -1,6 +1,6 @@
 -- Write your PostgreSQL query statement below
-SELECT epl.name AS Employee
-FROM Employee epl
+SELECT emp.name AS Employee
+FROM Employee emp
 JOIN Employee man
-ON epl.managerId = man.id
-WHERE epl.salary > man.salary;
+ON emp.managerId = man.id
+WHERE emp.salary > man.salary;
