@@ -1,5 +1,3 @@
--- Write your PostgreSQL query statement below
-SELECT a.email AS Email
-FROM Person a
+SELECT a.email AS Email FROM Person a
 GROUP BY a.email
-HAVING COUNT(*) > 1
+HAVING COUNT(*) > 1;
