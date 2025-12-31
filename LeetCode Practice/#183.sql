@@ -1,4 +1,6 @@
-SELECT cust.name AS Customers FROM Customers cust
-WHERE cust.id NOT IN (
-    SELECT ord.customerId FROM Orders ord
-)
+SELECT a.name AS Customers FROM Customers a
+WHERE a.id NOT IN (
+    SELECT b.id FROM Customers b
+    JOIN Orders c
+    ON b.id = c.customerId
+);
