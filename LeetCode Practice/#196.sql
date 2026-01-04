@@ -1,7 +1,7 @@
--- Write your PostgreSQL query statement below
 DELETE FROM Person
-WHERE id NOT IN(
-    SELECT A.id, A.email FROM Person
-    SELECT B.id, B.email FROM Person B
-    WHERE B.email = A.email AND B.id > A.id
-)
+WHERE id IN (
+    SELECT A.id FROM Person A 
+    JOIN Person B 
+    ON A.email = B.email
+    WHERE A.id > B.id
+);
