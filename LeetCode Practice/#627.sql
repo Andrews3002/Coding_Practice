@@ -1,2 +1,6 @@
-UPDATE sex FROM Salary
-IF sex = 'f' THEN sex = 'm' ELSE sex = 'f'
+UPDATE Salary
+IF sex = 'm' THEN 
+    sex = 'f' 
+ELSE 
+    sex = 'm'
+END IF;
