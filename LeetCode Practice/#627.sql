@@ -1,5 +1,5 @@
 UPDATE Salary
 SET sex = CASE 
-    WHEN sex = 'f' THEN sex = 'm'
-    WHEN sex = 'm' THEN sex = 'f'
+    WHERE sex = 'f' THEN sex = 'm'
+    WHERE sex = 'm' THEN sex = 'f'
 END;
