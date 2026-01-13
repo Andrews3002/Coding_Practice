@@ -1,6 +1,5 @@
 UPDATE Salary
-IF sex = 'm' THEN 
-    SET sex = 'f' 
-ELSE 
-    SET sex = 'm'
-END IF;
+SET sex = CASE 
+    WHEN sex = 'f' THEN sex = 'm'
+    WHEN sex = 'm' THEN sex = 'f'
+END;
