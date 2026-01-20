@@ -2,17 +2,17 @@ SELECT
     A.product_id,
     ROUND(
         COALESCE(
-            (SUM(A.units::numeric * B.price::numeric)/SUM(A.units::numeric)),
+            (SUM(B.units::numeric * A.price::numeric)/SUM(B.units::numeric)),
             0
         ),
         2
     ) AS average_price
 FROM 
-    UnitsSold A
+    Prices A
 LEFT JOIN 
-    Prices B
+    UnitsSold B
 ON 
     A.product_id = B.product_id
     AND
-    A.purchase_date BETWEEN B.start_date AND B.end_date
-GROUP BY a.product_id
+    B.purchase_date BETWEEN A.start_date AND A.end_date
+GROUP BY A.product_id
