@@ -9,7 +9,7 @@ SELECT
     ) AS average_price
 FROM 
     UnitsSold A
-JOIN 
+LEFT JOIN 
     Prices B
 ON 
     A.product_id = B.product_id
