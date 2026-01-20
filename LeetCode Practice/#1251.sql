@@ -1,7 +1,10 @@
 SELECT 
     A.product_id,
     ROUND(
-        (SUM(A.units::numeric * B.price::numeric)/SUM(A.units::numeric)),
+        COALESCE(
+            (SUM(A.units::numeric * B.price::numeric)/SUM(A.units::numeric)),
+            0
+        ),
         2
     ) AS average_price
 FROM 
