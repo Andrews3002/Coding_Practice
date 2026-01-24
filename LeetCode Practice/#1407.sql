@@ -1,6 +1,6 @@
 SELECT
     A.name,
-    COALESCE(B.distance, 0)
+    COALESCE(B.distance, 0) AS travelled_distance
 FROM Users A
 LEFT JOIN (
     SELECT 
@@ -10,4 +10,4 @@ LEFT JOIN (
     GROUP BY (user_id)
 ) AS B
 ON A.id = B.user_id
-ORDER BY B.distance DESC, A.name ASC
+ORDER BY travelled_distance DESC, A.name ASC
