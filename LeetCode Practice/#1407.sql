@@ -10,4 +10,4 @@ LEFT JOIN (
     GROUP BY (user_id)
 ) AS B
 ON A.id = B.user_id
-ORDER BY B.distance DESC, A.name ASC)
+ORDER BY (B.distance DESC, A.name ASC)
