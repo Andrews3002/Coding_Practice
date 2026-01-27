@@ -10,4 +10,4 @@ JOIN (
     GROUP BY account
 ) as B
 ON A.account = B.account
-WHERE B.balance > 1000;
+WHERE B.balance > 10000;
