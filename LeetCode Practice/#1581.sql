@@ -1,6 +1,6 @@
 SELECT 
     A.customer_id,
-    COUNT(*) AS amt_of_times
+    COUNT(*) AS count_no_trans
 FROM (
     SELECT * FROM Visits
     WHERE visit_id NOT IN (
