@@ -1,6 +1,6 @@
 SELECT 
     A.machine_id,
-    ROUND((SUM(B.timestamp - A.timestamp)::numeric/COUNT(*)::numeric), 3) AS processing_time
+    ROUND((AVG(B.timestamp::numeric - A.timestamp::numeric)), 3) AS processing_time
 FROM Activity A
 JOIN Activity B
 ON 
