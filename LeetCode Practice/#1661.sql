@@ -4,7 +4,7 @@ SELECT
 FROM Activity A
 JOIN Activity B
 ON 
-    A.machine_d = B.machine_id
+    A.machine_id = B.machine_id
     AND 
     A.process_id = B.process_id
     AND 
