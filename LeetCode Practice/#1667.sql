@@ -1,5 +1,5 @@
 SELECT 
     user_id,
-    INITCAP(name) AS name
+    UPPER(SUBSTRING(name FROM 1 FOR 1)) || LOWER(SUBSTRING(name FROM 2)) AS name
 FROM Users
 ORDER BY user_id ASC
