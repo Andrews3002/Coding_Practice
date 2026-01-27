@@ -6,5 +6,5 @@ SELECT
 FROM Employees A
 INNER JOIN Employees B
 ON A.employee_id = B.reports_to
-GROUP BY A.employee_id
+GROUP BY A.employee_id, A.name
 ORDER BY A.employee_id ASC
