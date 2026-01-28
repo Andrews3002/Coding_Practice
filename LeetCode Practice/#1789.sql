@@ -7,9 +7,9 @@ WHERE employee_id IN (
     FROM Employee
     WHERE primary_flag = 'Y'
 )
-OR (
+OR employee_id IN (
     SELECT
-        employee_id,
+        employee_id
     FROM Employee
     GROUP BY employee_id
     HAVING COUNT(*) = 1
