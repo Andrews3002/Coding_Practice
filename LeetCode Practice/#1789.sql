@@ -1,6 +1,7 @@
 SELECT 
     employee_id,
     department_id
+FROM Employee
 WHERE employee_id IN (
     SELECT 
         employee_id
