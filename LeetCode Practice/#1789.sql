@@ -7,7 +7,7 @@ WHERE employee_id IN (
     FROM Employee
     WHERE primary_flag = 'Y'
 )
-OR  IN (
+OR (
     SELECT
         employee_id,
     FROM Employee
