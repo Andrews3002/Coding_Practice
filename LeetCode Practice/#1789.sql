@@ -1,10 +1,9 @@
 SELECT 
     employee_id,
     department_id
-WHERE employee_id, department_id IN (
+WHERE employee_id IN (
     SELECT 
-        employee_id,
-        department_id
+        employee_id
     FROM Employee
     WHERE primary_flag = 'Y'
 )
