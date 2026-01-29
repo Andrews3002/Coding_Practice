@@ -3,6 +3,7 @@ SELECT
     'store1' AS store,
     store1 AS price
 FROM Products
+WHERE store1 != NULL
 
 UNION ALL
 
@@ -11,6 +12,7 @@ SELECT
     'store2' AS store,
     store2 AS price
 FROM Products
+WHERE store2 != NULL
 
 UNION ALL
 
@@ -18,4 +20,5 @@ SELECT
     product_id,
     'store3' AS store,
     store3 AS price
-FROM Products;
+FROM Products
+WHERE store3 != NULL;
