@@ -1,5 +1,5 @@
 SELECT 
-    employe_id,
+    employee_id,
     CASE
         WHEN
             employee_id::numeric%2 != 0
