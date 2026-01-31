@@ -6,6 +6,6 @@ FROM (
         user_id,
         time_stamp
     FROM Logins
-    WHERE time_stamp BETWEEN DATE '2020-01-01' AND DATE '2020-12-31'
+    WHERE time_stamp BETWEEN DATE '2020-01-01' AND DATE '2021-01-01'
 ) A
 GROUP BY A.user_id
