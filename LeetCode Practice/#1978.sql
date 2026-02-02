@@ -1,0 +1,9 @@
+SELECT A.employee_id FROM Employees A
+JOIN Employees B
+ON A.manager_id = B.employee_id
+WHERE 
+    salary < 30000
+    OR
+    A.manager_id NOT NULL 
+    AND
+    B.employee_id IS NULL  
