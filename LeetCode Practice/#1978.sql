@@ -4,6 +4,6 @@ ON A.manager_id = B.employee_id
 WHERE 
     salary < 30000
     OR
-    A.manager_id NOT NULL 
+    A.manager_id IS NOT NULL 
     AND
     B.employee_id IS NULL  
