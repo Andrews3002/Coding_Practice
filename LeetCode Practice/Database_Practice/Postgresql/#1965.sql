@@ -1,4 +1,4 @@
-SELECT C.empid 
+SELECT C.empid AS employee_id
 FROM (
     SELECT 
         A.employee_id AS empid
@@ -16,4 +16,4 @@ FROM (
     ON A.employee_id = B.employee_id
     WHERE B.name IS NULL
 ) AS C
-ORDER BY C.empid ASC
+ORDER BY employee_id ASC
