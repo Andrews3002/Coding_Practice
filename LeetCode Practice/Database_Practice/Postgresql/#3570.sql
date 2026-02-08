@@ -11,6 +11,7 @@ LEFT JOIN (
         book_id,
         COUNT(*) AS total_borrowed
     FROM borrowing_records
+    GROUP BY book_id
     WHERE return_date IS NULL
 ) AS B
 ON book_id = B.book_id
