@@ -15,4 +15,4 @@ LEFT JOIN (
 ) AS B
 ON book_id = B.book_id
 WHERE total_copies = B.total_borrowed
-ORDER BY current_borrowers DESC title ASC
+ORDER BY current_borrowers DESC, title ASC
