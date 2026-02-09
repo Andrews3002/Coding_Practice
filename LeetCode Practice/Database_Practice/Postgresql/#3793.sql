@@ -5,4 +5,6 @@ SELECT
 FROM prompts
 GROUP BY user_id
 HAVING COUNT(DISTINCT prompt) >= 3
+AND 
+COUNT(DISTINCT tokens) > 1
 ORDER BY avg_tokens DESC, user_id ASC
