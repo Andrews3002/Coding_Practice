@@ -1,7 +1,7 @@
 SELECT
     user_id,
     COUNT(DISTINCT prompt) AS prompt_count,
-    ROUND(AVG(SUM(tokens::numeric)), 2) AS avg_tokens
+    ROUND((SUM(tokens::numeric)/promp_count::numeric), 2) AS avg_tokens
 FROM prompts
 WHERE promp_count >= 3
 GROUP BY user_id
