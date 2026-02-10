@@ -1,8 +1,5 @@
 SELECT
-    CASE
-        WHEN A.rn > 1 THEN MAX(salary)
-        ELSE NULL
-    END AS "SecondHighestSalary"
+    MAX(A.salary) AS "SecondHighestSalary"
 FROM (
     SELECT
         salary,
@@ -10,3 +7,4 @@ FROM (
     FROM Employee
     GROUP BY salary
 ) AS A
+WHERE A.rn > 1
