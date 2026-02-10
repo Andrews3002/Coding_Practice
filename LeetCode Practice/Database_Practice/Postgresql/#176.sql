@@ -1,6 +1,6 @@
 SELECT
     CASE
-        WHEN MAX(A.rn = 1) THEN NULL
+        WHEN A.rn != 2 THEN NULL
         ELSE A.salary
     END AS SecondHighestSalary
 FROM (
