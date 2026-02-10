@@ -7,4 +7,4 @@ FROM (
     FROM Employee
     GROUP BY salary
 ) AS A
-WHERE A.rn > 1
+WHERE A.rn = 2
