@@ -1,5 +1,5 @@
 SELECT
-    COALESCE(A.salary, NULL) AS SecondHighestSalary
+    COALESCE(A.salary, 'NULL') AS SecondHighestSalary
 FROM (
     SELECT
         salary,
