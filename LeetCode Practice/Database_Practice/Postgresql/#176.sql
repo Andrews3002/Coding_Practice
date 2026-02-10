@@ -1,5 +1,5 @@
 SELECT
-    salary AS "SecondHighestSalary"
+    MAX(salary) AS "SecondHighestSalary"
 FROM Employee
 GROUP BY salary
 ORDER BY salary DESC
