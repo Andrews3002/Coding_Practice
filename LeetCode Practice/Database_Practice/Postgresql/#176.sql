@@ -1,7 +1,7 @@
 SELECT
     CASE
-        WHEN A.rn != 2 THEN NULL
-        ELSE A.salary
+        WHEN A.rn = 2 THEN salary
+        ELSE NULL
     END AS SecondHighestSalary
 FROM (
     SELECT
