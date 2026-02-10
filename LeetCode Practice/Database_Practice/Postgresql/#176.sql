@@ -1,5 +1,8 @@
 SELECT
-    COALESCE(A.salary, 'NULL') AS SecondHighestSalary
+    CASE
+        WHEN A.salary IS NULL THEN NULL
+        ELSE A.salary
+    END AS SecondHighestSalary
 FROM (
     SELECT
         salary,
