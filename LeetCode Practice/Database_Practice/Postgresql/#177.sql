@@ -4,7 +4,7 @@ BEGIN
     -- Write your PostgreSQL query statement below.
     SELECT
         CASE
-            WHEN N >= 0 THEN E.salary
+            WHEN N > 0 THEN E.salary
             ELSE NULL
         END AS "salary"
     FROM Employee E
