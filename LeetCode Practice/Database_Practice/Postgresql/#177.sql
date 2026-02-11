@@ -3,7 +3,10 @@ BEGIN
   RETURN QUERY (
     -- Write your PostgreSQL query statement below.
     SELECT
-        E.salary AS "salary"
+        CASE
+            WHEN N >= 0 THEN E.salary
+            ELSE NULL
+        END AS "salary"
     FROM Employee E
     GROUP BY E.salary
     ORDER BY E.salary DESC
