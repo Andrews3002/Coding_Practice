@@ -3,10 +3,10 @@ BEGIN
   RETURN QUERY (
     -- Write your PostgreSQL query statement below.
     SELECT
-        salary AS "salary"
-    FROM Employee
-    GROUP BY salary
-    ORDER BY salary DESC
+        E.salary AS "salary"
+    FROM Employee E
+    GROUP BY E.salary
+    ORDER BY E.salary DESC
     LIMIT 1
     OFFSET N-1
   );
