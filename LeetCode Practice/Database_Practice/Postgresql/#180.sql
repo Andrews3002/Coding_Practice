@@ -1,5 +1,5 @@
 SELECT
-    A.num AS "ConsecutiveNumbers"
+    A.num AS "ConsecutiveNums"
 FROM Logs A, Logs B, Logs C
 WHERE 
     A.num = B.num
