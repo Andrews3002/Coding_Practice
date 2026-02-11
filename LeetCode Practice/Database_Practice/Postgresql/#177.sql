@@ -2,8 +2,8 @@ CREATE OR REPLACE FUNCTION NthHighestSalary(N INT) RETURNS TABLE (Salary INT) AS
 BEGIN
   IF N <= 0 THEN
     RETURN QUERY(
-        SELECT NULL::INT;
-    )
+        SELECT NULL::INT
+    );
   ELSE
   RETURN QUERY (
     -- Write your PostgreSQL query statement below.
