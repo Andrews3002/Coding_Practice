@@ -9,5 +9,10 @@ JOIN (
         MAX(salary) as "maxsalary"
     FROM Employee
     GROUP BY departmentId
-) AS B, Department C
-ON A.salary = B.maxsalary AND A.departmentId = B.departmentId AND A.departmentId = C.id
+) AS B
+ON 
+    A.salary = B.maxsalary 
+    AND 
+    A.departmentId = B.departmentId
+JOIN Department C 
+ON A.departmentId = C.id
