@@ -7,7 +7,7 @@ FROM (
             WHEN A.event_date = B.first_day + 1 THEN 1
             ELSE 0
         END AS "condition"
-    FROM Activity
+    FROM Activity A
     JOIN (
         SELECT
             player_id,
