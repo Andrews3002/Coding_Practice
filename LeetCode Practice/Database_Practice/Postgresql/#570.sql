@@ -1,11 +1,10 @@
 SELECT
     A.name AS "name"
 FROM Employee A
-JOIN (
+WHERE A.id IN (
     SELECT
         managerId
     FROM Employee
     GROUP BY managerId
     HAVING COUNT(*) >= 5
-) AS B
-ON A.id = B.managerId
+)
