@@ -1,5 +1,5 @@
 SELECT
-    ROUND(SUM(tiv_2016)::numeric,2)
+    ROUND(SUM(tiv_2016)::numeric,2) AS "tiv_2016"
 FROM Insurance
 WHERE tiv_2015 IN (
     SELECT
