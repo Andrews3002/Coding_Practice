@@ -11,6 +11,9 @@ WHERE tiv_2015 IN (
 AND
 (lat, lon) IN (
     SELECT 
-        DISTINCT lat, lon
+        lat,
+        lon
     FROM Insurance
+    GROUP BY (lat, lon)
+    HAVING COUNT(*) = 1
 )
