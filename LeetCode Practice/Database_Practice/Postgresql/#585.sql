@@ -1,0 +1,16 @@
+SELECT
+    ROUND(SUM(tiv_2016)::numeric,2)
+FROM Insurance
+WHERE tiv_2015 IN (
+    SELECT
+        tiv_2015
+    FROM Insureance
+    GROUP BY tiv_2015
+    HAVING COUNT(*) >= 2
+)
+AND
+(lat, lon) IN (
+    SELECT 
+        DISTINCT lat, lon
+    FROM Insurance
+)
