@@ -4,7 +4,7 @@ FROM Insurance
 WHERE tiv_2015 IN (
     SELECT
         tiv_2015
-    FROM Insureance
+    FROM Insurance
     GROUP BY tiv_2015
     HAVING COUNT(*) >= 2
 )
