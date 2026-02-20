@@ -18,4 +18,5 @@ FROM (
     ) AS A
     GROUP BY A.id
 ) AS B
-WHERE B.num == MAX(B.num)
+ORDER BY B.num
+LIMIT 1
