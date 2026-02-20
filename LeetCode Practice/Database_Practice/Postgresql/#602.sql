@@ -13,5 +13,5 @@ FROM (
     FROM RequestAccepted
 ) AS A
 GROUP BY A.id
-ORDER BY COUNT(*)
+ORDER BY COUNT(*) DESC
 LIMIT 1
