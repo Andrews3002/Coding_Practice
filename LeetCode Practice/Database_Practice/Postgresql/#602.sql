@@ -18,5 +18,5 @@ FROM (
     ) AS A
     GROUP BY A.id
 ) AS B
-ORDER BY B.num
+ORDER BY B.num DESC
 LIMIT 1
