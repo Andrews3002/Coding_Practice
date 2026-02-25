@@ -1,6 +1,7 @@
 SELECT
+    A.p_id AS "id",
     CASE
-        WHEN A.p_id = NULL THEN 'ROOT'
+        WHEN A.p_id IS NULL THEN 'ROOT'
         WHEN (
             SELECT
                 COUNT(*)
@@ -8,5 +9,5 @@ SELECT
             WHERE B.p_id = A.id
         ) = 0 THEN 'LEAF'
         ELSE 'INNER'
-    END 
+    END AS "type"
 FROM Tree A
