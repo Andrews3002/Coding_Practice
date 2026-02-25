@@ -1,5 +1,5 @@
 SELECT
-    A.p_id AS "id",
+    A.id AS "id",
     CASE
         WHEN A.p_id IS NULL THEN 'ROOT'
         WHEN (
