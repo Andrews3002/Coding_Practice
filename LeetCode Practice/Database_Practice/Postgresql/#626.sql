@@ -5,5 +5,7 @@ SELECT
         ELSE FUTURE.student
     END AS "student"
 FROM Seat PRESENT
-JOIN Seat PAST, Seat FUTURE
-ON PRESENT.id-1 = PAST.id AND PRESENT.id+1 = FUTURE.id
+JOIN Seat PAST 
+ON PRESENT.id-1 = PAST.id
+JOIN Seat FUTURE
+ON PRESENT.id+1 = FUTURE.id
