@@ -1,13 +1,8 @@
 SELECT
     PRESENT.id AS "id",
     CASE 
-        WHEN COUNT(*)%2 == 0 THEN 
-            CASE        
-                WHEN PRESENT.id%2 = 0 THEN PAST.student
-                ELSE FUTURE.student
-            END
+        WHEN PRESENT.id%2 == 0 THEN PAST.student
         WHEN FUTURE.student IS NULL THEN PRESENT.student
-        WHEN PRESENT.id%2 = 0 THEN PAST.student
         ELSE FUTURE.student
     END AS "student"
 FROM Seat PRESENT
