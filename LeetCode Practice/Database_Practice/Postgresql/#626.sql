@@ -1,6 +1,10 @@
 SELECT
     PRESENT.id AS "id",
     CASE 
+        WHEN COUNT(*)%2 == 0 THEN (
+            WHEN PRESENT.id%2 = 0 THEN PAST.student
+            ELSE FUTURE.student
+        )
         WHEN FUTURE.student IS NULL THEN PRESENT.student
         WHEN PRESENT.id%2 = 0 THEN PAST.student
         ELSE FUTURE.student
