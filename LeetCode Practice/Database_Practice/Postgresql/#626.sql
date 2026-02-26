@@ -1,7 +1,7 @@
 SELECT
     PRESENT.id AS "id",
     CASE 
-        WHEN PRESENT.id%2 == 0 THEN PAST.student
+        WHEN PRESENT.id%2 = 0 THEN PAST.student
         WHEN FUTURE.student IS NULL THEN PRESENT.student
         ELSE FUTURE.student
     END AS "student"
