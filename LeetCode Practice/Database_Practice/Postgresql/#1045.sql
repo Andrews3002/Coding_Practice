@@ -5,7 +5,7 @@ SELECT
             FROM Product
         ) = A.cCount THEN A.customer_id
         ELSE NULL
-    END AS 'customer_id'
+    END AS "customer_id"
 FROM (
     SELECT
         B.customer_id AS "customer_id",
