@@ -19,4 +19,4 @@ FROM (
     ) AS B
     GROUP BY B.customer_id
 ) AS A
-WHERE cutomer_id IS NOT NULL
+WHERE customer_id IS NOT NULL
