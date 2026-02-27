@@ -1,21 +1,25 @@
 SELECT
-    CASE
-        WHEN (
-            SELECT COUNT(*)
-            FROM Product
-        ) = A.ccount THEN A.customer_id
-    END AS "customer_id"
+    C.customer_id
 FROM (
     SELECT
-        B.customer_id AS "customer_id",
-        COUNT(*) AS "ccount"
+        CASE
+            WHEN (
+                SELECT COUNT(*)
+                FROM Product
+            ) = A.ccount THEN A.customer_id
+        END AS "customer_id"
     FROM (
         SELECT
-            customer_id,
-            product_key
-        FROM Customer
-        GROUP BY customer_id, product_key
-    ) AS B
-    GROUP BY B.customer_id
-) AS A
-WHERE A.customer_id IS NOT NULL
+            B.customer_id AS "customer_id",
+            COUNT(*) AS "ccount"
+        FROM (
+            SELECT
+                customer_id,
+                product_key
+            FROM Customer
+            GROUP BY customer_id, product_key
+        ) AS B
+        GROUP BY B.customer_id
+    ) AS A
+) AS C
+WHERE C.customer_id IS NOT NULL
