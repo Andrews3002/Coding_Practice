@@ -4,7 +4,6 @@ SELECT
             SELECT COUNT(*)
             FROM Product
         ) = A.ccount THEN A.customer_id
-        ELSE NULL
     END AS "customer_id"
 FROM (
     SELECT
@@ -19,4 +18,3 @@ FROM (
     ) AS B
     GROUP BY B.customer_id
 ) AS A
-WHERE customer_id IS NOT NULL
