@@ -1,5 +1,5 @@
 SELECT
-    A.product_id, AS "product_id",
+    A.product_id AS "product_id",
     A.year AS "first_year",
     A.quantity AS "quantity",
     A.price AS "price"
