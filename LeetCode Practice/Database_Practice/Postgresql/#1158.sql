@@ -3,12 +3,6 @@ SELECT
     A.join_date AS "join _date",
     COALESCE(B.total_orders, 0) AS "orders_in_2019"
 FROM Users A
-WHERE A.user_id IN (
-    SELECT
-        buyer_id
-    FROM Orders
-    GROUP BY buyer_id
-)
 JOIN (
     SELECT 
         buyer_id AS "buyer_id"
@@ -18,3 +12,9 @@ JOIN (
     GROUP BY buyer_id
 ) AS B
 ON A.user_id = B.buyer_id
+WHERE A.user_id IN (
+    SELECT
+        buyer_id
+    FROM Orders
+    GROUP BY buyer_id
+)
