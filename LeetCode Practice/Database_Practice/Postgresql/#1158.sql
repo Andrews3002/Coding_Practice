@@ -11,7 +11,7 @@ JOIN (
     WHERE 
         order_date > DATE '2019-01-01' 
         AND 
-        order_date > DATE '2020-01-01'
+        order_date < DATE '2020-01-01'
     GROUP BY buyer_id
 ) AS B
 ON A.user_id = B.buyer_id
