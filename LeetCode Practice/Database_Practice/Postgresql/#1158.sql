@@ -15,9 +15,3 @@ LEFT JOIN (
     GROUP BY buyer_id
 ) AS B
 ON A.user_id = B.buyer_id
-WHERE A.user_id IN (
-    SELECT
-        buyer_id
-    FROM Orders
-    GROUP BY buyer_id
-)
