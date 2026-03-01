@@ -9,7 +9,7 @@ LEFT JOIN (
         COUNT(*) AS "total_orders"
     FROM Orders
     WHERE 
-        order_date > DATE '2019-01-01' 
+        order_date >= DATE '2019-01-01' 
         AND 
         order_date < DATE '2020-01-01'
     GROUP BY buyer_id
