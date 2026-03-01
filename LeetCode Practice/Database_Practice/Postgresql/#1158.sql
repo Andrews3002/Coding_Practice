@@ -1,6 +1,6 @@
 SELECT 
     A.user_id AS "buyer_id",
-    A.join_date AS "join _date"
+    A.join_date AS "join _date",
     COALESCE(B.total_orders, 0) AS "orders_in_2019"
 FROM Users A
 WHRERE A.user_id IN (
