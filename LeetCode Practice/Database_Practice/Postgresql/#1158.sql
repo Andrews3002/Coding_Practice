@@ -3,7 +3,7 @@ SELECT
     A.join_date AS "join _date",
     COALESCE(B.total_orders, 0) AS "orders_in_2019"
 FROM Users A
-JOIN (
+LEFT JOIN (
     SELECT 
         buyer_id AS "buyer_id",
         COUNT(*) AS "total_orders"
