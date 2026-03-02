@@ -8,7 +8,7 @@ LEFT JOIN (
         B.new_price AS "new_price",
         B.change_date AS "change_date"
     FROM Products B
-    WHERE B.product_id, B.change_date IN (
+    WHERE (B.product_id, B.change_date) IN (
         SELECT
             A.product_id AS "product_id",
             MAX(change_date) AS "change_date"
