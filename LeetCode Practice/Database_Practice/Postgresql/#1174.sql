@@ -1,5 +1,5 @@
 SELECT
-ROUND(AVG(COUNT(*) FILTER(WHERE B.first_date = A.customer_pref_delivery_date),COUNT(DISTINCT A.customer_id)),2) AS "immediate_percentage"
+ROUND((COUNT(*) FILTER(WHERE B.first_date = A.customer_pref_delivery_date)::numeric / COUNT(DISTINCT A.customer_id)::numeric) * 100, 2) AS "immediate_percentage"
 FROM Delivery A
 JOIN (
     SELECT
