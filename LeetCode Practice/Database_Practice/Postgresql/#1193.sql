@@ -4,7 +4,7 @@ SELECT
     COUNT(*) AS "trans_count",
     COUNT(*) FILTER(WHERE B.state = 'approved') AS "approved_count",
     SUM(amount) AS "trans_total_amount",
-    SUM(amount) FILTER(WHERE B.state = 'approved') AS "approved_total_amount"
+    COELESCE(SUM(amount) FILTER(WHERE B.state = 'approved'), 0) AS "approved_total_amount"
 FROM (
     SELECT
         A.id AS "id",
