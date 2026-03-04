@@ -10,7 +10,7 @@ FROM (
         A.id AS "id",
         A.country AS "country",
         A.state AS "state",
-        A>amount AS "amount",
+        A.amount AS "amount",
         TO_CHAR(A.trans_date, 'YYYY-MM') AS "month"
     FROM Transactions A
 ) AS B
