@@ -2,7 +2,7 @@ WITH ordered AS (
     SELECT * FROM Queue
     ORDER BY turn ASC
 ),
-RECURSIVE running_total AS (
+running_total AS RECURSIVE(
     SELECT
         person_name,
         weight as "capacity",
