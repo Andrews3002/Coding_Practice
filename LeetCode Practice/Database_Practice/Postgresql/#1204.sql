@@ -4,7 +4,7 @@ WITH running_total AS (
         SUM(weight) OVER (ORDER BY turn) AS "capacity",
         turn
     FROM Queue
-    WHERE capacity <= 1000
+    WHERE SUM(weight) OVER (ORDER BY turn) <= 1000
 )
 SELECT
     person_name
