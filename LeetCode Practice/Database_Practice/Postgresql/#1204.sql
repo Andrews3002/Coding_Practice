@@ -4,9 +4,12 @@ WITH running_total AS (
         SUM(weight) OVER (ORDER BY turn) AS "capacity",
         turn
     FROM Queue
-    WHERE SUM(weight) OVER (ORDER BY turn) <= 1000
+),
+filtered AS (
+    SELECT * FROM running_total
+    WHERE capacity <= 1000
 )
 SELECT
     person_name
-FROM running_total
+FROM filtered
 WHERE turn = MAX(turn)
