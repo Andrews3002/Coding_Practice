@@ -1,13 +1,12 @@
-WITH ordered AS (
-    SELECT * FROM Queue
-    ORDER BY turn ASC
-),
-running_total AS RECURSIVE (
+WITH RECURSIVE running_total AS (
     SELECT
         person_name,
         weight as "capacity",
         turn
-    FROM ordered
+    FROM (
+        SELECT * FROM Queue
+        ORDER BY turn ASC
+    )
     WHERE turn = 1
 
     UNION ALL
@@ -16,7 +15,10 @@ running_total AS RECURSIVE (
         A.person_name AS "person_name",
         A.weight + B.capacity AS "capacity",
         A.turn
-    FROM ordered A
+    FROM (
+        SELECT * FROM Queue
+        ORDER BY turn ASC
+    ) AS A
     JOIN running_total AS B
     ON A.turn = B.turn + 1
     WHERE A.weight + B.capacity <= 1000
