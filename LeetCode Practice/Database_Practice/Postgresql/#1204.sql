@@ -8,8 +8,14 @@ WITH running_total AS (
 filtered AS (
     SELECT * FROM running_total
     WHERE capacity <= 1000
+),
+last_entry AS (
+    SELECT 
+        MAX(turn) AS "last"
+    FROM filtered
 )
 SELECT
-    person_name
-FROM filtered
-WHERE turn = MAX(turn)
+    A.person_name AS "person_name"
+FROM filtered A
+JOIN last_entry B
+ON A.turn = B.last
