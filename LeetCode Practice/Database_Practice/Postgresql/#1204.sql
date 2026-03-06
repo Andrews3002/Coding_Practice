@@ -1,35 +1,12 @@
-WITH RECURSIVE running_total AS (
+WITH running_total AS (
     SELECT
         person_name,
-        weight as "capacity",
+        SUM(weight) OVER (ORDER BY turn) AS "capacity"
         turn
-    FROM (
-        SELECT * FROM Queue
-        ORDER BY turn ASC
-    )
-    WHERE turn = 1
-
-    UNION ALL
-
-    SELECT
-        A.person_name AS "person_name",
-        A.weight + B.capacity AS "capacity",
-        A.turn
-    FROM (
-        SELECT * FROM Queue
-        ORDER BY turn ASC
-    ) AS A
-    JOIN running_total AS B
-    ON A.turn = B.turn + 1
-    WHERE A.weight + B.capacity <= 1000
-),
-last_entry AS (
-    SELECT 
-        MAX(turn) AS "last"
-    FROM running_total
+    FROM Queue
+    WHERE capacity <= 1000
 )
 SELECT
-    A.person_name AS "person_name"
-FROM running_total A
-JOIN last_entry B
-ON A.turn = B.last
+    person_name
+FROM running_total
+WHERE turn = MAX(turn)
