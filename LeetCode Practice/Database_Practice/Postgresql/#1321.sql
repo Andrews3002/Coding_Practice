@@ -7,28 +7,22 @@ WITH firstQ AS (
 ),
 secondQ AS (
     SELECT
-        visited_on,
-        CASE
-	        WHEN 1=2 THEN 0
-	        ELSE(
-                SELECT
-                    SUM(amount)
-                FROM firstQ q
-                WHERE q.visited_on >= visited_on-6
-                AND q.visited_on < visited_on+1
-            )
-        END AS "amount",
-        CASE
-	        WHEN 1=2 THEN 0
-	        ELSE(
-                SELECT
-                    COUNT(*)
-                FROM firstQ q
-                WHERE q.visited_on >= visited_on-6
-                AND q.visited_on < visited_on+1
-            )
-        END AS "prevdays"
-    FROM firstQ
+        A.visited_on,
+        (
+            SELECT
+                SUM(amount)
+            FROM firstQ q
+            WHERE q.visited_on >= A.visited_on-6
+            AND q.visited_on < A.visited_on+1
+        ) AS "amount",
+        (
+            SELECT
+                COUNT(*)
+            FROM firstQ q
+            WHERE q.visited_on >= A.visited_on-6
+            AND q.visited_on < A.visited_on+1
+        ) AS "prevdays"
+    FROM firstQ A
 ),
 thirdQ AS (
     SELECT
