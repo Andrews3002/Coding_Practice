@@ -36,7 +36,7 @@ thirdQ AS (
         amount,
         prevdays
     FROM secondQ
-    WHERE visted_on-6 >= (
+    WHERE visited_on-6 >= (
         SELECT
             MIN(visited_on)
         FROM firstQ
