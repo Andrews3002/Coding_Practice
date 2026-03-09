@@ -41,3 +41,4 @@ SELECT
     amount,
     ROUND(amount::numeric/prevdays::numeric,2) AS "average_amount"
 FROM thirdQ
+ORDER BY visited_on ASC
