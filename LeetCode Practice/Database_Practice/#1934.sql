@@ -5,4 +5,3 @@ FROM signups s
 JOIN confirmations c 
 ON s.user_id = c.user_id
 GROUP BY c.user_id;
-/
