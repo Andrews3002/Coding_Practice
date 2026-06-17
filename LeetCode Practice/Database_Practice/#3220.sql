@@ -1,5 +1,5 @@
 SELECT 
-    transaction_date AS "transaction_date",
+    TO_CHAR(transaction_date, 'YYYY-MM-DD') AS "transaction_date",
     SUM(CASE WHEN MOD(amount, 2) != 0 THEN amount ELSE 0 END) AS "odd_sum",
     SUM(CASE WHEN MOD(amount, 2) = 0 THEN amount ELSE 0 END) AS "even_sum"
 FROM transactions
