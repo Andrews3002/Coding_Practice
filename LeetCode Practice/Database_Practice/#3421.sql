@@ -17,3 +17,4 @@ JOIN scores b
 ON a.student_id = b.student_id AND a.subject = b.subject AND a.first_exam_date = b.exam_date
 JOIN scores c
 ON a.student_id = c.student_id AND a.subject = c.subject AND a.last_exam_date = c.exam_date
+WHERE b.score < c.score;
