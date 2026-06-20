@@ -1,7 +1,8 @@
 SELECT
     a.student_id AS "student_id",
     a.subject AS "subject",
-    MIN(a.score) AS "first_score",
-    MAX(a.score) AS "latest_score"
+    MIN(a.exam_date) AS "first_exam_date",
+    MAX(a.exam_date) AS "last_exam_date"
 FROM scores a
-GROUP BY (a.student_id, a.subject)
+GROUP BY a.student_id, a.subject
+HAVING MIN(a.exam_date) != MAX(a.exam_date)
