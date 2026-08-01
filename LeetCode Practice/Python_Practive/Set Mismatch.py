@@ -2,7 +2,7 @@ class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
         nums.sort()
         seq = 0
-        rep = 0
+        reps = 0
         loss = 0
 
         for i, num in enumerate(nums):
@@ -13,9 +13,9 @@ class Solution:
             
             if seq > 1:
                 if num == nums[i-1]:
-                    rep = num
+                    reps = num
 
-        if rep == 0 or loss == 0:
+        if reps == 0 or loss == 0:
             return
         else:
-            return [rep, loss]
+            return [reps, loss]
